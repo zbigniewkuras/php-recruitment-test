@@ -43,19 +43,26 @@ This will require database modification, changes to cache warming process and ch
 
 ## Task 4
 
+On homepage for logged in users add following information:
+* Total number of pages associated with this user
+* Least recently visited page
+* Most recently visited page
+
+## Task 5
+
 Allow users to define multiple caching servers.
 Each caching server has it's own unique IP address and can cache multiple websites.
 You can assume that different users do not share caching servers.
 This will require database modification, changes to cache warming process and changes on frontend.
 
-## Task 5
+## Task 6
 
 Create new empty git repository.
 
 In newly created repository create new application component that allows adding new websites and pages by importing [sitemap file](http://www.sitemaps.org/).
 This functionality should be accessible via both command line and frontend.
 
-## Task 6
+## Task 7
 
 As You may have noticed pages that require logged in user are visible to users, and those that make sense only for not logged in users (like login or registration forms) are visible to logged in users.
 Introduce modification that will fix this problem (show login form to not logged in users on pages that require user context and show 403 message on login and registration forms when user is logged in).
