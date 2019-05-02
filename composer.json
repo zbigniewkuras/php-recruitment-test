@@ -10,7 +10,9 @@
       "Snowdog\\DevTest\\": "src"
     },
     "files": [
-      "src/components.php"
+      "src/components.php",
+      "lib/CacheWarm.php"
     ]
   }
 }
+
