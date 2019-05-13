@@ -38,9 +38,11 @@ class WarmCommand
             $warmer->setResolver($resolver);
             $warmer->setHostname($website->getHostname());
             $warmer->setActor($actor);
-
+            
+            /** @var \Snowdog\DevTest\Model\Page $page */
             foreach ($pages as $page) {
                 $warmer->warm($page->getUrl());
+                $this->pageManager->updateWarmedAt($page, date('Y-m-d H:i:s'));
             }
         } else {
             $output->writeln('<error>Website with ID ' . $id . ' does not exists!</error>');

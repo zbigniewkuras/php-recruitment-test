@@ -8,6 +8,7 @@ class Page
     public $page_id;
     public $url;
     public $website_id;
+    public $warmed_at;
     
     public function __construct()
     {
@@ -40,5 +41,12 @@ class Page
         return $this->website_id;
     }
     
-    
+    /**
+     * 
+     * @return string
+     */
+    public function getWarmedAt()
+    {
+        return $this->warmed_at;
+    }
 }
