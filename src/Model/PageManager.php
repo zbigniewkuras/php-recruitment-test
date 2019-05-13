@@ -39,7 +39,7 @@ class PageManager
     }
 
     /**
-     * 
+     *
      * @param Page $page
      * @param int $warmedAt
      * @return number
@@ -52,7 +52,38 @@ class PageManager
         $statement->bindParam(':pageId', $pageId, \PDO::PARAM_INT);
         $statement->bindParam(':warmedAt', $warmedAt, \PDO::PARAM_STR);
         $statement->execute();
-        
+
         return $statement->rowCount();
+    }
+
+    /**
+     * 
+     * @param User $user
+     * @return number
+     */
+    public function getCountByUser(User $user)
+    {
+        $userId = $user->getUserId();
+        /** @var \PDOStatement $query */
+        $query = $this->database->prepare('SELECT COUNT(*) as num_pages FROM pages as p LEFT JOIN websites as w ON w.website_id = p.website_id  WHERE w.user_id = :user');
+        $query->bindParam(':user', $userId, \PDO::PARAM_INT);
+        $query->execute();
+        return (int)$query->fetchColumn();
+    }
+    
+    /**
+     * 
+     * @param User $user
+     * @param string $orderDir
+     * @return mixed
+     */
+    public function getByUser(User $user, $orderDir = 'ASC')
+    {
+        $userId = $user->getUserId();
+        /** @var \PDOStatement $query */
+        $query = $this->database->prepare('SELECT p.* FROM pages as p LEFT JOIN websites as w ON w.website_id = p.website_id  WHERE w.user_id = :user ORDER BY p.warmed_at '.$orderDir.' LIMIT 1');
+        $query->bindParam(':user', $userId, \PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetchObject(Page::class);
     }
 }

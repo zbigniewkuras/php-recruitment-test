@@ -47,7 +47,14 @@
                     <button type="submit" class="btn btn-primary">Add Website</button>
                 </form>
             </div>
-
+            
+            <div class="padded">
+                Total Pages: <?= $this->getCountPages(); ?> <br/>
+                <?php $leastRecentlyVisitedPage = $this->getLeastRecentlyVisitedPage(); ?>
+                Least recently visited page: <?= $leastRecentlyVisitedPage ? $leastRecentlyVisitedPage->getUrl() : '-' ?> <br/>
+                <?php $mostRecentlyVisitedPage = $this->getMostRecentlyVisitedPage(); ?>
+                Most recently visited page:  <?= $mostRecentlyVisitedPage ? $mostRecentlyVisitedPage->getUrl() : '-' ?> <br/>
+            </div>
 
             <div class="padded">
                 <table class="table table-striped">
