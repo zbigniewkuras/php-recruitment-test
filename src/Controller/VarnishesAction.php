@@ -1,26 +1,32 @@
 <?php
-
 namespace Snowdog\DevTest\Controller;
 
 use Snowdog\DevTest\Model\UserManager;
 use Snowdog\DevTest\Model\Varnish;
 use Snowdog\DevTest\Model\VarnishManager;
 use Snowdog\DevTest\Model\WebsiteManager;
+use Snowdog\DevTest\Model\User;
 
 class VarnishesAction
 {
+
     /**
+     *
      * @var UserManager
      */
     private $userManager;
+
     /**
+     *
      * @var VarnishManager
      */
     private $varnishManager;
 
-    /** @var \Snowdog\DevTest\Model\User $user */
+    /** @var User $user */
     private $user;
+
     /**
+     *
      * @var WebsiteManager
      */
     private $websiteManager;
@@ -29,7 +35,7 @@ class VarnishesAction
     {
         $this->userManager = $userManager;
         $this->varnishManager = $varnishManager;
-        if(isset($_SESSION['login'])) {
+        if (isset($_SESSION['login'])) {
             $this->user = $this->userManager->getByLogin($_SESSION['login']);
         }
         $this->websiteManager = $websiteManager;
@@ -37,7 +43,7 @@ class VarnishesAction
 
     public function getVarnishes()
     {
-        if($this->user) {
+        if ($this->user) {
             return $this->varnishManager->getAllByUser($this->user);
         }
         return [];
@@ -45,7 +51,7 @@ class VarnishesAction
 
     public function getWebsites()
     {
-        if($this->user) {
+        if ($this->user) {
             return $this->websiteManager->getAllByUser($this->user);
         }
         return [];
@@ -55,15 +61,14 @@ class VarnishesAction
     {
         $websites = $this->varnishManager->getWebsites($varnish);
         $ids = [];
-        foreach($websites as $website) {
+        foreach ($websites as $website) {
             $ids[] = $website->getWebsiteId();
         }
         return $ids;
     }
 
-    public function execute() {
-
+    public function execute()
+    {
         include __DIR__ . '/../view/varnish.phtml';
     }
-
 }

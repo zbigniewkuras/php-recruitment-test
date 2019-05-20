@@ -5,7 +5,7 @@ namespace Snowdog\DevTest\Controller;
 use Snowdog\DevTest\Model\UserManager;
 use Snowdog\DevTest\Model\VarnishManager;
 
-class CreateVarnishLinkAction
+class CreateVarnishUnlinkAction
 {
     /**
      * @var UserManager
@@ -28,8 +28,8 @@ class CreateVarnishLinkAction
         $websiteId = (int)$_POST['website_id'];
         
         try {
-            $link = $this->varnishManager->link($varnishId, $websiteId);
-            $message = 'Linked!';
+            $link = $this->varnishManager->unlink($varnishId, $websiteId);
+            $message = 'Unlinked!';
         } catch (\Exception $e) {
             $message = $e->getMessage();
         }
