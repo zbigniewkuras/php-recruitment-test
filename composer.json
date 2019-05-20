@@ -1,23 +1,17 @@
 {
-  "name": "snowdogapps/dev-test",
-  "require": {
-    "nikic/fast-route": "^1.0",
-    "php-di/php-di": "^5.3",
-    "mnapoli/silly": "^1.3"
+  "name" : "snowdogapps/dev-test",
+  "require" : {
+    "nikic/fast-route" : "^1.0",
+    "php-di/php-di" : "^5.3",
+    "mnapoli/silly" : "^1.3"
   },
-  "autoload": {
-    "files": [
-<<<<<<< HEAD
+  "autoload" : {
+    "files" : [
       "src/components.php",
       "lib/CacheWarm.php"
-    ]
-=======
-      "src/components.php"
     ],
-    "psr-4": {
-      "Snowdog\\DevTest\\": "src"
+    "psr-4" : {
+      "Snowdog\\DevTest\\" : "src"
     }
->>>>>>> ffc284378cf2a19f605adb5ca03fe7216ce50308
   }
 }
-
