@@ -69,8 +69,15 @@
                     <button type="submit" class="btn btn-primary">Add Website</button>
                 </form>
             </div>
-            
-            <p class="bg-success">Hello <?= $this->user->getDisplayName() ?>!</p>
+            <div class="padded">
+                <form class="form-inline" action="/import" method="POST"  enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Upload sitemap</<label>
+                        <input  class="form-control" type="file" name="sitemap" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
         <?php endif ?>
     </div>
 
