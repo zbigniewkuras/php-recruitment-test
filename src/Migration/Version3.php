@@ -40,10 +40,10 @@ class Version3
 
     public function __invoke()
     {
-        $this->createPageTable();
+        $this->updatePageTable();
     }
 
-    private function createPageTable()
+    private function updatePageTable()
     {
         $createQuery = <<<SQL
 ALTER TABLE `pages`
